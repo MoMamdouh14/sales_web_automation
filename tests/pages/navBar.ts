@@ -25,7 +25,25 @@ export class navBar {
 
     // Methods
     // Actions
+    async login(userName: string, otp: string) {
+        await this.loginModalButton.click(); // open login modal
+        await this.userNameInput.fill(userName); // add username
+        await this.continueButton.click();
+        await this.fillOTP(otp); // fill otp input fields
+        await this.loginButton.click(); // login
+    };
+
+    async fillOTP(otp: string) {
+        for (let i = 0; i < otp.length; i++) {
+            const otpDigit = otp[i];
+            const otpInputField = this.otpInput.nth(i);
+            await otpInputField.fill(otpDigit);
+        };
+    };
 
     // Assertions
+    async assertUserGreeting() {
+        await expect(this.userGreeting).toBeVisible();
+    };
 
 };
