@@ -35,15 +35,15 @@ export class navBar {
 
     async fillOTP(otp: string) {
         for (let i = 0; i < otp.length; i++) {
-            const otpDigit = otp[i];
-            const otpInputField = this.otpInput.nth(i);
-            await otpInputField.fill(otpDigit);
+            const otpDigit = otp[i]; // accessing each digit of the otp string every iteration
+            const otpInputField = this.otpInput.nth(i); // accessing each otp input field locator every iteration
+            await otpInputField.fill(otpDigit); // fill each otp input field with the corresponding digit of the otp string
         };
     };
 
     // Assertions
-    async assertUserGreeting() {
-        await expect(this.userGreeting).toBeVisible();
+    async assertLoggedIn() {
+        await expect(this.userGreeting).toBeVisible(); // assert that user greeting is visible after successful login
     };
 
 };
